@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-// @ts-expect-error: Allow side-effect import of global CSS without a module declaration
 import './globals.css'
 import { ThemeProvider } from 'next-themes'
 import { Toaster } from 'sonner'  // ✅ New: Sonner Toaster
