@@ -146,8 +146,8 @@ export default function App() {
         return url;
       }
       throw new Error('No image URL returned');
-    
-    } 
+
+    }
     catch (err: unknown) {
       if (err instanceof Error) {
         toast.error(err.message || 'Image gen failed—try another!');
@@ -420,9 +420,9 @@ export default function App() {
                 <Card className="p-4">
                   <h3 className="font-bold">Workout</h3>
                   <div className="flex gap-2">
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
+                    <Button
+                      size="sm"
+                      variant="outline"
                       onClick={() => toggleSpeak(plan.workout.map(d => `${d.day}\n` + d.exercises.map(e => `${e.name}: ${e.sets} sets of ${e.reps}, rest ${e.rest}`).join('\n')).join('\n'))}
                       disabled={isSpeaking}
                     >
@@ -438,9 +438,9 @@ export default function App() {
                 <Card className="p-4">
                   <h3 className="font-bold">Diet</h3>
                   <div className="flex gap-2">
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
+                    <Button
+                      size="sm"
+                      variant="outline"
                       onClick={() => toggleSpeak(plan.diet.map(d => `${d.day}\n` + d.meals.map(m => `${m.meal}: ${m.items.join(', ')}`).join('\n')).join('\n'))}
                       disabled={isSpeaking}
                     >
@@ -541,17 +541,15 @@ export default function App() {
               </Tabs>
 
               <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-                <DialogContent className="max-w-4xl max-h-[90vh] p-0 relative">
+                <DialogContent className="max-w-4xl max-h-[90vh] p-0">
                   <VisuallyHidden>
                     <DialogTitle>Generated Fitness Image Preview</DialogTitle>
                   </VisuallyHidden>
-                  {/* only render the Next/Image after mount to avoid SSR mismatch */}
-                  {mounted && selectedImage && (
-                    <Image
+                  {selectedImage && (
+                    <img
                       src={selectedImage}
                       alt="Generated fitness or food image"
-                      fill
-                      className="object-contain rounded-lg p-4"
+                      className="w-full h-full object-contain max-w-full max-h-full rounded-lg p-4"
                     />
                   )}
                 </DialogContent>
